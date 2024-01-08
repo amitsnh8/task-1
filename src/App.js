@@ -21,7 +21,7 @@ function App() {
             row?(
                 row.map((item,index)=>{
                     return(
-                        <div>
+                        <div key={index}>
                             <input type={item.type} value={item.value} />
                         </div>
                     )
