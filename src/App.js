@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState,useEffect} from "react";
 
+const inputArr=[{type:"text",value:""},{type:"text",value:""},{type:"text",value:""}]
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [row,setRow]=useState(inputArr)
+    const handleAdd=()=>{
+        setRow([...row,...inputArr])
+    }
+    
+    
+    return(
+        <>
+        {
+            row?(
+                row.map((item,index)=>{
+                    return(
+                        <div>
+                            <input type={item.type} value={item.value} />
+                        </div>
+                    )
+                })
+            ):null
+        }
+        <button onClick={handleAdd} >Add</button>
+        </>
+    )
 }
 
 export default App;
